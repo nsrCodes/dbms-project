@@ -26,17 +26,17 @@ app.use(cookieParser());
 app.use(fileUpload());
 app.use(express.static("static", options));
 
-const cart = require("./routes/cart");
-const customer = require("./routes/customer");
-const product = require("./routes/product");
-const seller = require("./routes/seller");
-const transc = require("./routes/transc");
+const insurance_portfolio = require("./routes/insurance-portfolio");
+const clients = require("./routes/clients");
+const insurance = require("./routes/insurance");
+const admins = require("./routes/admins");
+const claim = require("./routes/claim");
 
-app.use("/api/cart", cart);
-app.use("/api/customer", customer);
-app.use("/api/seller", seller);
-app.use("/api/product", product);
-app.use("/api/transc", transc);
+app.use("/api/insurance-portfolio", insurance_portfolio);
+app.use("/api/clients", clients);
+app.use("/api/admins", admins);
+app.use("/api/insurance", insurance);
+app.use("/api/claim", claim);
 
 dotenv.config();
 
