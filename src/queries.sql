@@ -18,9 +18,7 @@ insurance_id INT PRIMARY KEY NOT NULL auto_increment,
 insurance_name VARCHAR(80) NOT NULL,
 insurance_description VARCHAR(300) NOT NULL,
 insurance_admin_id INT NOT NULL,
-FOREIGN KEY (insurance_admin_id) REFERENCES admins(admin_id) ON DELETE
-SET 
-    NULL
+FOREIGN KEY (insurance_admin_id) REFERENCES admins(admin_id) ON DELETE CASCADE
 );
 
 CREATE TABLE car(
@@ -29,19 +27,16 @@ car_plate_number INT NOT NULL,
 car_model_name VARCHAR(50) NOT NULL,
 car_owner_id INT NOT NULL,
 car_insurance_id INT,
-FOREIGN KEY (car_owner_id) REFERENCES clients(client_id) ON DELETE
-SET 
-    NULL,
+FOREIGN KEY (car_owner_id) REFERENCES clients(client_id) ON DELETE CASCADE,
 FOREIGN KEY (car_insurance_id) REFERENCES insurance(insurance_id) ON DELETE CASCADE
-
 );
 
 CREATE TABLE accident(
 accident_id INT PRIMARY KEY NOT NULL auto_increment,
 accident_location VARCHAR(400) NOT NULL,
 accident_description VARCHAR(400),
-accident_car_id INT ,
-FOREIGN KEY (car_id) REFERENCES car(car_id) ON DELETE CASCADE
+accident_car_id INT,
+FOREIGN KEY (accident_car_id) REFERENCES car(car_id) ON DELETE CASCADE
 );
 
 CREATE TABLE payment( -- insurance purchased
